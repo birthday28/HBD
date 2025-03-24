@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Hunt Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #b2f7ef; /* Turquoise */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .btn-turquoise {
+            background-color: #40e0d0;
+            border: none;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .btn-turquoise:hover {
+            background-color: #32c8b7;
+        }
+        .hint {
+            display: none;
+            color: #32c8b7 ; 
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h2 class="text-primary">💙 Web Hunt Game</h2>
+        <p>Answer correctly to unlock the next page!</p>
+        <label for="answer" class="form-label"><strong>What is cutie favorite color?</strong></label>
+        <input type="text" id="answer" class="form-control" placeholder="Enter your answer">
+        <button class="btn btn-turquoise mt-3" onclick="checkAnswer()">Submit Answer</button>
+        <p id="message" class="mt-2 text-danger"></p>
+        <p id="hint" class="hint">Hint: You have a same shirt color</p>
+    </div>
+
+    <script>
+        let attempts = 0;
+        function checkAnswer() {
+            const correctAnswer = "yellow"; // Change this to his favorite movie
+            const userAnswer = document.getElementById("answer").value.trim();
+            const message = document.getElementById("message");
+            const hint = document.getElementById("hint");
+
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                window.location.href = "page4.html"; // Change to the next question page
+            } else {
+                attempts++;
+                message.textContent = "❌ Incorrect! Try again.";
+                if (attempts >= 3) {
+                    hint.style.display = "block"; // Show hint after 3 wrong tries
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
